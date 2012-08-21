@@ -164,6 +164,8 @@ public class H2DataStoreFactory extends JDBCDataStoreFactory {
         
         dataSource.setDriverClassName("org.h2.Driver");
         dataSource.setPoolPreparedStatements(false);
+        
+        
 
         return new DBCPDataSource(dataSource);
     }
