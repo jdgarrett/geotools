@@ -11,6 +11,7 @@ import java.lang.String;
 import java.util.Calendar;
 import java.util.List;
 
+import java.util.Set;
 import net.opengis.cat.csw20.AbstractQueryType;
 import net.opengis.cat.csw20.AbstractRecordType;
 import net.opengis.cat.csw20.AcknowledgementType;
@@ -19,6 +20,7 @@ import net.opengis.cat.csw20.CapabilitiesType;
 import net.opengis.cat.csw20.ConceptualSchemeType;
 import net.opengis.cat.csw20.Csw20Factory;
 import net.opengis.cat.csw20.Csw20Package;
+import net.opengis.cat.csw20.DCMIRecordType;
 import net.opengis.cat.csw20.DeleteType;
 import net.opengis.cat.csw20.DescribeRecordResponseType;
 import net.opengis.cat.csw20.DescribeRecordType;
@@ -43,11 +45,14 @@ import net.opengis.cat.csw20.QueryConstraintType;
 import net.opengis.cat.csw20.QueryType;
 import net.opengis.cat.csw20.RangeOfValuesType;
 import net.opengis.cat.csw20.RecordPropertyType;
+import net.opengis.cat.csw20.RecordType;
 import net.opengis.cat.csw20.RequestBaseType;
 import net.opengis.cat.csw20.RequestStatusType;
 import net.opengis.cat.csw20.ResultType;
 import net.opengis.cat.csw20.SchemaComponentType;
 import net.opengis.cat.csw20.SearchResultsType;
+import net.opengis.cat.csw20.SimpleLiteral;
+import net.opengis.cat.csw20.SummaryRecordType;
 import net.opengis.cat.csw20.TransactionResponseType;
 import net.opengis.cat.csw20.TransactionSummaryType;
 import net.opengis.cat.csw20.TransactionType;
@@ -59,6 +64,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -372,6 +378,34 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
      * <!-- end-user-doc -->
      * @generated
      */
+    private EClass dcmiRecordTypeEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass recordTypeEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass simpleLiteralEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass summaryRecordTypeEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     private EEnum elementSetTypeEEnum = null;
 
     /**
@@ -422,6 +456,20 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
      * @generated
      */
     private EDataType calendarEDataType = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType setEDataType = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType uriEDataType = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -555,26 +603,8 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getBriefRecordType_IdentifierGroup() {
-        return (EAttribute)briefRecordTypeEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public EReference getBriefRecordType_Identifier() {
-        return (EReference)briefRecordTypeEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getBriefRecordType_TitleGroup() {
-        return (EAttribute)briefRecordTypeEClass.getEStructuralFeatures().get(2);
+        return (EReference)briefRecordTypeEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -583,7 +613,7 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
      * @generated
      */
     public EReference getBriefRecordType_Title() {
-        return (EReference)briefRecordTypeEClass.getEStructuralFeatures().get(3);
+        return (EReference)briefRecordTypeEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -592,16 +622,7 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
      * @generated
      */
     public EAttribute getBriefRecordType_Type() {
-        return (EAttribute)briefRecordTypeEClass.getEStructuralFeatures().get(4);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getBriefRecordType_BoundingBoxGroup() {
-        return (EAttribute)briefRecordTypeEClass.getEStructuralFeatures().get(5);
+        return (EAttribute)briefRecordTypeEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -610,7 +631,7 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
      * @generated
      */
     public EReference getBriefRecordType_BoundingBox() {
-        return (EReference)briefRecordTypeEClass.getEStructuralFeatures().get(6);
+        return (EReference)briefRecordTypeEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1887,6 +1908,177 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getDCMIRecordType() {
+        return dcmiRecordTypeEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getDCMIRecordType_DCElement() {
+        return (EReference)dcmiRecordTypeEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getRecordType() {
+        return recordTypeEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getRecordType_AnyText() {
+        return (EReference)recordTypeEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getRecordType_BoundingBox() {
+        return (EReference)recordTypeEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getSimpleLiteral() {
+        return simpleLiteralEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getSimpleLiteral_Value() {
+        return (EAttribute)simpleLiteralEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getSimpleLiteral_Scheme() {
+        return (EAttribute)simpleLiteralEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getSummaryRecordType() {
+        return summaryRecordTypeEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSummaryRecordType_Identifier() {
+        return (EReference)summaryRecordTypeEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSummaryRecordType_Title() {
+        return (EReference)summaryRecordTypeEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSummaryRecordType_Type() {
+        return (EReference)summaryRecordTypeEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSummaryRecordType_Subject() {
+        return (EReference)summaryRecordTypeEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSummaryRecordType_Format() {
+        return (EReference)summaryRecordTypeEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSummaryRecordType_Relation() {
+        return (EReference)summaryRecordTypeEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSummaryRecordType_Modified() {
+        return (EReference)summaryRecordTypeEClass.getEStructuralFeatures().get(6);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSummaryRecordType_Abstract() {
+        return (EReference)summaryRecordTypeEClass.getEStructuralFeatures().get(7);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSummaryRecordType_Spatial() {
+        return (EReference)summaryRecordTypeEClass.getEStructuralFeatures().get(8);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSummaryRecordType_BoundingBox() {
+        return (EReference)summaryRecordTypeEClass.getEStructuralFeatures().get(9);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EEnum getElementSetType() {
         return elementSetTypeEEnum;
     }
@@ -1959,6 +2151,24 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EDataType getSet() {
+        return setEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EDataType getURI() {
+        return uriEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public Csw20Factory getCsw20Factory() {
         return (Csw20Factory)getEFactoryInstance();
     }
@@ -1992,12 +2202,9 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
         createEAttribute(acknowledgementTypeEClass, ACKNOWLEDGEMENT_TYPE__TIME_STAMP);
 
         briefRecordTypeEClass = createEClass(BRIEF_RECORD_TYPE);
-        createEAttribute(briefRecordTypeEClass, BRIEF_RECORD_TYPE__IDENTIFIER_GROUP);
         createEReference(briefRecordTypeEClass, BRIEF_RECORD_TYPE__IDENTIFIER);
-        createEAttribute(briefRecordTypeEClass, BRIEF_RECORD_TYPE__TITLE_GROUP);
         createEReference(briefRecordTypeEClass, BRIEF_RECORD_TYPE__TITLE);
         createEAttribute(briefRecordTypeEClass, BRIEF_RECORD_TYPE__TYPE);
-        createEAttribute(briefRecordTypeEClass, BRIEF_RECORD_TYPE__BOUNDING_BOX_GROUP);
         createEReference(briefRecordTypeEClass, BRIEF_RECORD_TYPE__BOUNDING_BOX);
 
         capabilitiesTypeEClass = createEClass(CAPABILITIES_TYPE);
@@ -2178,6 +2385,29 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
 
         sortByEClass = createEClass(SORT_BY);
 
+        dcmiRecordTypeEClass = createEClass(DCMI_RECORD_TYPE);
+        createEReference(dcmiRecordTypeEClass, DCMI_RECORD_TYPE__DC_ELEMENT);
+
+        recordTypeEClass = createEClass(RECORD_TYPE);
+        createEReference(recordTypeEClass, RECORD_TYPE__ANY_TEXT);
+        createEReference(recordTypeEClass, RECORD_TYPE__BOUNDING_BOX);
+
+        simpleLiteralEClass = createEClass(SIMPLE_LITERAL);
+        createEAttribute(simpleLiteralEClass, SIMPLE_LITERAL__VALUE);
+        createEAttribute(simpleLiteralEClass, SIMPLE_LITERAL__SCHEME);
+
+        summaryRecordTypeEClass = createEClass(SUMMARY_RECORD_TYPE);
+        createEReference(summaryRecordTypeEClass, SUMMARY_RECORD_TYPE__IDENTIFIER);
+        createEReference(summaryRecordTypeEClass, SUMMARY_RECORD_TYPE__TITLE);
+        createEReference(summaryRecordTypeEClass, SUMMARY_RECORD_TYPE__TYPE);
+        createEReference(summaryRecordTypeEClass, SUMMARY_RECORD_TYPE__SUBJECT);
+        createEReference(summaryRecordTypeEClass, SUMMARY_RECORD_TYPE__FORMAT);
+        createEReference(summaryRecordTypeEClass, SUMMARY_RECORD_TYPE__RELATION);
+        createEReference(summaryRecordTypeEClass, SUMMARY_RECORD_TYPE__MODIFIED);
+        createEReference(summaryRecordTypeEClass, SUMMARY_RECORD_TYPE__ABSTRACT);
+        createEReference(summaryRecordTypeEClass, SUMMARY_RECORD_TYPE__SPATIAL);
+        createEReference(summaryRecordTypeEClass, SUMMARY_RECORD_TYPE__BOUNDING_BOX);
+
         // Create enums
         elementSetTypeEEnum = createEEnum(ELEMENT_SET_TYPE);
         resultTypeEEnum = createEEnum(RESULT_TYPE);
@@ -2189,6 +2419,8 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
         serviceType_1EDataType = createEDataType(SERVICE_TYPE_1);
         versionTypeEDataType = createEDataType(VERSION_TYPE);
         calendarEDataType = createEDataType(CALENDAR);
+        setEDataType = createEDataType(SET);
+        uriEDataType = createEDataType(URI);
     }
 
     /**
@@ -2216,10 +2448,11 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
 
         // Obtain other dependent packages
         XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
-        EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
         Ows10Package theOws10Package = (Ows10Package)EPackage.Registry.INSTANCE.getEPackage(Ows10Package.eNS_URI);
+        EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
         // Create type parameters
+        addETypeParameter(setEDataType, "T");
 
         // Set bounds for type parameters
 
@@ -2234,6 +2467,9 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
         harvestTypeEClass.getESuperTypes().add(this.getRequestBaseType());
         queryTypeEClass.getESuperTypes().add(this.getAbstractQueryType());
         transactionTypeEClass.getESuperTypes().add(this.getRequestBaseType());
+        dcmiRecordTypeEClass.getESuperTypes().add(this.getAbstractRecordType());
+        recordTypeEClass.getESuperTypes().add(this.getDCMIRecordType());
+        summaryRecordTypeEClass.getESuperTypes().add(this.getAbstractRecordType());
 
         // Initialize classes and features; add operations and parameters
         initEClass(abstractQueryTypeEClass, AbstractQueryType.class, "AbstractQueryType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2246,12 +2482,9 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
         initEAttribute(getAcknowledgementType_TimeStamp(), this.getCalendar(), "timeStamp", null, 0, 1, AcknowledgementType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(briefRecordTypeEClass, BriefRecordType.class, "BriefRecordType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getBriefRecordType_IdentifierGroup(), theEcorePackage.getEFeatureMapEntry(), "identifierGroup", null, 1, -1, BriefRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getBriefRecordType_Identifier(), this.getString(), null, "identifier", null, 1, -1, BriefRecordType.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEAttribute(getBriefRecordType_TitleGroup(), theEcorePackage.getEFeatureMapEntry(), "titleGroup", null, 1, -1, BriefRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getBriefRecordType_Title(), this.getString(), null, "title", null, 1, -1, BriefRecordType.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEReference(getBriefRecordType_Identifier(), this.getSimpleLiteral(), null, "identifier", null, 0, -1, BriefRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getBriefRecordType_Title(), this.getSimpleLiteral(), null, "title", null, 0, -1, BriefRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getBriefRecordType_Type(), theXMLTypePackage.getString(), "type", null, 0, 1, BriefRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getBriefRecordType_BoundingBoxGroup(), theEcorePackage.getEFeatureMapEntry(), "boundingBoxGroup", null, 0, -1, BriefRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getBriefRecordType_BoundingBox(), theOws10Package.getBoundingBoxType(), null, "boundingBox", null, 0, -1, BriefRecordType.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
         initEClass(capabilitiesTypeEClass, CapabilitiesType.class, "CapabilitiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2307,7 +2540,7 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
         initEAttribute(getGetDomainType_ParameterName(), theXMLTypePackage.getAnyURI(), "parameterName", null, 0, 1, GetDomainType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(getRecordByIdTypeEClass, GetRecordByIdType.class, "GetRecordByIdType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getGetRecordByIdType_Id(), theXMLTypePackage.getAnyURI(), "id", null, 1, 1, GetRecordByIdType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getGetRecordByIdType_Id(), this.getURI(), "id", null, 0, -1, GetRecordByIdType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getGetRecordByIdType_ElementSetName(), this.getElementSetNameType(), null, "elementSetName", null, 0, 1, GetRecordByIdType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getGetRecordByIdType_OutputFormat(), theXMLTypePackage.getString(), "outputFormat", "application/xml", 0, 1, GetRecordByIdType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getGetRecordByIdType_OutputSchema(), theXMLTypePackage.getAnyURI(), "outputSchema", null, 0, 1, GetRecordByIdType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2432,6 +2665,29 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
 
         initEClass(sortByEClass, SortBy.class, "SortBy", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
+        initEClass(dcmiRecordTypeEClass, DCMIRecordType.class, "DCMIRecordType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDCMIRecordType_DCElement(), this.getSimpleLiteral(), null, "dCElement", null, 0, -1, DCMIRecordType.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+        initEClass(recordTypeEClass, RecordType.class, "RecordType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getRecordType_AnyText(), this.getString(), null, "anyText", null, 0, -1, RecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getRecordType_BoundingBox(), theOws10Package.getBoundingBoxType(), null, "boundingBox", null, 0, -1, RecordType.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+        initEClass(simpleLiteralEClass, SimpleLiteral.class, "SimpleLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getSimpleLiteral_Value(), ecorePackage.getEJavaObject(), "value", null, 0, 1, SimpleLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getSimpleLiteral_Scheme(), theXMLTypePackage.getAnyURI(), "scheme", null, 0, 1, SimpleLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(summaryRecordTypeEClass, SummaryRecordType.class, "SummaryRecordType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getSummaryRecordType_Identifier(), this.getSimpleLiteral(), null, "identifier", null, 1, -1, SummaryRecordType.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEReference(getSummaryRecordType_Title(), this.getSimpleLiteral(), null, "title", null, 1, -1, SummaryRecordType.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEReference(getSummaryRecordType_Type(), this.getSimpleLiteral(), null, "type", null, 0, 1, SummaryRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getSummaryRecordType_Subject(), this.getSimpleLiteral(), null, "subject", null, 0, -1, SummaryRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getSummaryRecordType_Format(), this.getSimpleLiteral(), null, "format", null, 0, -1, SummaryRecordType.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEReference(getSummaryRecordType_Relation(), this.getSimpleLiteral(), null, "relation", null, 0, -1, SummaryRecordType.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+        initEReference(getSummaryRecordType_Modified(), this.getSimpleLiteral(), null, "modified", null, 0, -1, SummaryRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getSummaryRecordType_Abstract(), this.getSimpleLiteral(), null, "abstract", null, 0, -1, SummaryRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getSummaryRecordType_Spatial(), this.getSimpleLiteral(), null, "spatial", null, 0, -1, SummaryRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getSummaryRecordType_BoundingBox(), theOws10Package.getBoundingBoxType(), null, "boundingBox", null, 0, -1, SummaryRecordType.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
         // Initialize enums and add enum literals
         initEEnum(elementSetTypeEEnum, ElementSetType.class, "ElementSetType");
         addEEnumLiteral(elementSetTypeEEnum, ElementSetType.BRIEF);
@@ -2450,6 +2706,8 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
         initEDataType(serviceType_1EDataType, String.class, "ServiceType_1", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(versionTypeEDataType, String.class, "VersionType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(calendarEDataType, Calendar.class, "Calendar", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(setEDataType, Set.class, "Set", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(uriEDataType, java.net.URI.class, "URI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
         createResource(eNS_URI);
@@ -2510,49 +2768,7 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
            new String[] {
              "name", "BriefRecordType",
              "kind", "elementOnly"
-           });			
-        addAnnotation
-          (getBriefRecordType_IdentifierGroup(), 
-           source, 
-           new String[] {
-             "kind", "group",
-             "name", "identifier:group",
-             "namespace", "http://purl.org/dc/elements/1.1/"
-           });			
-        addAnnotation
-          (getBriefRecordType_Identifier(), 
-           source, 
-           new String[] {
-             "kind", "element",
-             "name", "identifier",
-             "namespace", "http://purl.org/dc/elements/1.1/",
-             "group", "http://purl.org/dc/elements/1.1/#identifier:group"
-           });			
-        addAnnotation
-          (getBriefRecordType_TitleGroup(), 
-           source, 
-           new String[] {
-             "kind", "group",
-             "name", "title:group",
-             "namespace", "http://purl.org/dc/elements/1.1/"
-           });			
-        addAnnotation
-          (getBriefRecordType_Title(), 
-           source, 
-           new String[] {
-             "kind", "element",
-             "name", "title",
-             "namespace", "http://purl.org/dc/elements/1.1/",
-             "group", "http://purl.org/dc/elements/1.1/#title:group"
-           });				
-        addAnnotation
-          (getBriefRecordType_BoundingBoxGroup(), 
-           source, 
-           new String[] {
-             "kind", "group",
-             "name", "BoundingBox:group",
-             "namespace", "http://www.opengis.net/ows"
-           });		
+           });						
         addAnnotation
           (getBriefRecordType_BoundingBox(), 
            source, 
@@ -2859,14 +3075,6 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
              "name", "GetRecordByIdType",
              "kind", "elementOnly"
            });			
-        addAnnotation
-          (getGetRecordByIdType_Id(), 
-           source, 
-           new String[] {
-             "kind", "element",
-             "name", "Id",
-             "namespace", "##targetNamespace"
-           });		
         addAnnotation
           (getGetRecordByIdType_ElementSetName(), 
            source, 
@@ -3582,6 +3790,152 @@ public class Csw20PackageImpl extends EPackageImpl implements Csw20Package {
            new String[] {
              "kind", "attribute",
              "name", "handle"
+           });		
+        addAnnotation
+          (dcmiRecordTypeEClass, 
+           source, 
+           new String[] {
+             "name", "DCMIRecordType",
+             "kind", "elementOnly"
+           });			
+        addAnnotation
+          (getDCMIRecordType_DCElement(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "DC-element",
+             "namespace", "http://purl.org/dc/elements/1.1/",
+             "group", "http://purl.org/dc/elements/1.1/#DC-element:group"
+           });		
+        addAnnotation
+          (recordTypeEClass, 
+           source, 
+           new String[] {
+             "name", "RecordType",
+             "kind", "elementOnly"
+           });			
+        addAnnotation
+          (getRecordType_AnyText(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "AnyText",
+             "namespace", "##targetNamespace"
+           });		
+        addAnnotation
+          (getRecordType_BoundingBox(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "BoundingBox",
+             "namespace", "http://www.opengis.net/ows",
+             "group", "http://www.opengis.net/ows#BoundingBox:group"
+           });		
+        addAnnotation
+          (simpleLiteralEClass, 
+           source, 
+           new String[] {
+             "name", "SimpleLiteral",
+             "kind", "elementOnly"
+           });		
+        addAnnotation
+          (getSimpleLiteral_Scheme(), 
+           source, 
+           new String[] {
+             "kind", "attribute",
+             "name", "scheme"
+           });		
+        addAnnotation
+          (summaryRecordTypeEClass, 
+           source, 
+           new String[] {
+             "name", "SummaryRecordType",
+             "kind", "elementOnly"
+           });			
+        addAnnotation
+          (getSummaryRecordType_Identifier(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "identifier",
+             "namespace", "http://purl.org/dc/elements/1.1/",
+             "group", "http://purl.org/dc/elements/1.1/#identifier:group"
+           });			
+        addAnnotation
+          (getSummaryRecordType_Title(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "title",
+             "namespace", "http://purl.org/dc/elements/1.1/",
+             "group", "http://purl.org/dc/elements/1.1/#title:group"
+           });			
+        addAnnotation
+          (getSummaryRecordType_Type(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "type",
+             "namespace", "http://purl.org/dc/elements/1.1/"
+           });			
+        addAnnotation
+          (getSummaryRecordType_Subject(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "subject",
+             "namespace", "http://purl.org/dc/elements/1.1/"
+           });			
+        addAnnotation
+          (getSummaryRecordType_Format(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "format",
+             "namespace", "http://purl.org/dc/elements/1.1/",
+             "group", "http://purl.org/dc/elements/1.1/#format:group"
+           });			
+        addAnnotation
+          (getSummaryRecordType_Relation(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "relation",
+             "namespace", "http://purl.org/dc/elements/1.1/",
+             "group", "http://purl.org/dc/elements/1.1/#relation:group"
+           });			
+        addAnnotation
+          (getSummaryRecordType_Modified(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "modified",
+             "namespace", "http://purl.org/dc/terms/"
+           });		
+        addAnnotation
+          (getSummaryRecordType_Abstract(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "abstract",
+             "namespace", "http://purl.org/dc/terms/"
+           });		
+        addAnnotation
+          (getSummaryRecordType_Spatial(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "spatial",
+             "namespace", "http://purl.org/dc/terms/"
+           });		
+        addAnnotation
+          (getSummaryRecordType_BoundingBox(), 
+           source, 
+           new String[] {
+             "kind", "element",
+             "name", "BoundingBox",
+             "namespace", "http://www.opengis.net/ows",
+             "group", "http://www.opengis.net/ows#BoundingBox:group"
            });		
         addAnnotation
           (elementSetTypeEEnum, 

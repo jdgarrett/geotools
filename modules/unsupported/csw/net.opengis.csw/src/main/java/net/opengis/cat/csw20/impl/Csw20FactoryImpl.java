@@ -6,15 +6,18 @@
  */
 package net.opengis.cat.csw20.impl;
 
+import java.net.URI;
 import java.util.Calendar;
 import java.util.List;
 
+import java.util.Set;
 import net.opengis.cat.csw20.AcknowledgementType;
 import net.opengis.cat.csw20.BriefRecordType;
 import net.opengis.cat.csw20.CapabilitiesType;
 import net.opengis.cat.csw20.ConceptualSchemeType;
 import net.opengis.cat.csw20.Csw20Factory;
 import net.opengis.cat.csw20.Csw20Package;
+import net.opengis.cat.csw20.DCMIRecordType;
 import net.opengis.cat.csw20.DeleteType;
 import net.opengis.cat.csw20.DescribeRecordResponseType;
 import net.opengis.cat.csw20.DescribeRecordType;
@@ -39,10 +42,13 @@ import net.opengis.cat.csw20.QueryConstraintType;
 import net.opengis.cat.csw20.QueryType;
 import net.opengis.cat.csw20.RangeOfValuesType;
 import net.opengis.cat.csw20.RecordPropertyType;
+import net.opengis.cat.csw20.RecordType;
 import net.opengis.cat.csw20.RequestStatusType;
 import net.opengis.cat.csw20.ResultType;
 import net.opengis.cat.csw20.SchemaComponentType;
 import net.opengis.cat.csw20.SearchResultsType;
+import net.opengis.cat.csw20.SimpleLiteral;
+import net.opengis.cat.csw20.SummaryRecordType;
 import net.opengis.cat.csw20.TransactionResponseType;
 import net.opengis.cat.csw20.TransactionSummaryType;
 import net.opengis.cat.csw20.TransactionType;
@@ -135,6 +141,10 @@ public class Csw20FactoryImpl extends EFactoryImpl implements Csw20Factory {
             case Csw20Package.TRANSACTION_SUMMARY_TYPE: return createTransactionSummaryType();
             case Csw20Package.TRANSACTION_TYPE: return createTransactionType();
             case Csw20Package.UPDATE_TYPE: return createUpdateType();
+            case Csw20Package.DCMI_RECORD_TYPE: return createDCMIRecordType();
+            case Csw20Package.RECORD_TYPE: return createRecordType();
+            case Csw20Package.SIMPLE_LITERAL: return createSimpleLiteral();
+            case Csw20Package.SUMMARY_RECORD_TYPE: return createSummaryRecordType();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -164,6 +174,10 @@ public class Csw20FactoryImpl extends EFactoryImpl implements Csw20Factory {
                 return createVersionTypeFromString(eDataType, initialValue);
             case Csw20Package.CALENDAR:
                 return createCalendarFromString(eDataType, initialValue);
+            case Csw20Package.SET:
+                return createSetFromString(eDataType, initialValue);
+            case Csw20Package.URI:
+                return createURIFromString(eDataType, initialValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -193,6 +207,10 @@ public class Csw20FactoryImpl extends EFactoryImpl implements Csw20Factory {
                 return convertVersionTypeToString(eDataType, instanceValue);
             case Csw20Package.CALENDAR:
                 return convertCalendarToString(eDataType, instanceValue);
+            case Csw20Package.SET:
+                return convertSetToString(eDataType, instanceValue);
+            case Csw20Package.URI:
+                return convertURIToString(eDataType, instanceValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -543,6 +561,46 @@ public class Csw20FactoryImpl extends EFactoryImpl implements Csw20Factory {
      * <!-- end-user-doc -->
      * @generated
      */
+    public DCMIRecordType createDCMIRecordType() {
+        DCMIRecordTypeImpl dcmiRecordType = new DCMIRecordTypeImpl();
+        return dcmiRecordType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public RecordType createRecordType() {
+        RecordTypeImpl recordType = new RecordTypeImpl();
+        return recordType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public SimpleLiteral createSimpleLiteral() {
+        SimpleLiteralImpl simpleLiteral = new SimpleLiteralImpl();
+        return simpleLiteral;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public SummaryRecordType createSummaryRecordType() {
+        SummaryRecordTypeImpl summaryRecordType = new SummaryRecordTypeImpl();
+        return summaryRecordType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public ElementSetType createElementSetTypeFromString(EDataType eDataType, String initialValue) {
         ElementSetType result = ElementSetType.get(initialValue);
         if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -685,6 +743,42 @@ public class Csw20FactoryImpl extends EFactoryImpl implements Csw20Factory {
      * @generated
      */
     public String convertCalendarToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Set<?> createSetFromString(EDataType eDataType, String initialValue) {
+        return (Set<?>)super.createFromString(initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertSetToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public URI createURIFromString(EDataType eDataType, String initialValue) {
+        return (URI)super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertURIToString(EDataType eDataType, Object instanceValue) {
         return super.convertToString(eDataType, instanceValue);
     }
 
