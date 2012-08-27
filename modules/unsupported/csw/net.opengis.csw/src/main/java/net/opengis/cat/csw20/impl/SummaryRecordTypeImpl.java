@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -51,7 +52,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class SummaryRecordTypeImpl extends AbstractRecordTypeImpl implements SummaryRecordType {
     /**
-     * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+     * The cached value of the '{@link #getType() <em>Type</em>}' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @see #getType()
@@ -59,6 +60,26 @@ public class SummaryRecordTypeImpl extends AbstractRecordTypeImpl implements Sum
      * @ordered
      */
     protected SimpleLiteral type;
+    
+    /**
+     * The cached value of the '{@link #getSubject() <em>Identifier</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSubject()
+     * @ordered
+     */
+    protected EList<SimpleLiteral> identifier;
+    
+    /**
+     * The cached value of the '{@link #getSubject() <em>title</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSubject()
+     * @ordered
+     */
+    protected EList<SimpleLiteral> title;
+
+
 
     /**
      * The cached value of the '{@link #getSubject() <em>Subject</em>}' containment reference list.
@@ -91,6 +112,33 @@ public class SummaryRecordTypeImpl extends AbstractRecordTypeImpl implements Sum
     protected EList<SimpleLiteral> abstract_;
 
     /**
+     * The cached value of the '{@link #getFormat() <em>Format</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSpatial()
+     * @ordered
+     */
+    protected EList<SimpleLiteral> format;
+    
+    /**
+     * The cached value of the '{@link #getRelation() <em>Relation</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSpatial()
+     * @ordered
+     */
+    protected EList<SimpleLiteral> relation;
+    
+    /**
+     * The cached value of the '{@link #getBoundingBox() <em>BoundingBox</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSpatial()
+     * @ordered
+     */
+    protected EList<BoundingBoxType> boundingBox;
+    
+    /**
      * The cached value of the '{@link #getSpatial() <em>Spatial</em>}' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -122,27 +170,23 @@ public class SummaryRecordTypeImpl extends AbstractRecordTypeImpl implements Sum
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
      */
     public EList<SimpleLiteral> getIdentifier() {
-        // TODO: implement this method to return the 'Identifier' containment reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
+        if (identifier == null) {
+            identifier = new EObjectContainmentEList<SimpleLiteral>(SimpleLiteral.class, this, Csw20Package.SUMMARY_RECORD_TYPE__IDENTIFIER);
+        }
+        return identifier;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
      */
     public EList<SimpleLiteral> getTitle() {
-        // TODO: implement this method to return the 'Title' containment reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
+        if (title == null) {
+            title = new EObjectResolvingEList<SimpleLiteral>(SimpleLiteral.class, this, Csw20Package.SUMMARY_RECORD_TYPE__TITLE);
+        }
+        return title;
     }
 
     /**
@@ -151,6 +195,14 @@ public class SummaryRecordTypeImpl extends AbstractRecordTypeImpl implements Sum
      * @generated
      */
     public SimpleLiteral getType() {
+        if (type != null && type.eIsProxy()) {
+            InternalEObject oldType = (InternalEObject)type;
+            type = (SimpleLiteral)eResolveProxy(oldType);
+            if (type != oldType) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, Csw20Package.SUMMARY_RECORD_TYPE__TYPE, oldType, type));
+            }
+        }
         return type;
     }
 
@@ -159,14 +211,8 @@ public class SummaryRecordTypeImpl extends AbstractRecordTypeImpl implements Sum
      * <!-- end-user-doc -->
      * @generated
      */
-    public NotificationChain basicSetType(SimpleLiteral newType, NotificationChain msgs) {
-        SimpleLiteral oldType = type;
-        type = newType;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Csw20Package.SUMMARY_RECORD_TYPE__TYPE, oldType, newType);
-            if (msgs == null) msgs = notification; else msgs.add(notification);
-        }
-        return msgs;
+    public SimpleLiteral basicGetType() {
+        return type;
     }
 
     /**
@@ -175,17 +221,10 @@ public class SummaryRecordTypeImpl extends AbstractRecordTypeImpl implements Sum
      * @generated
      */
     public void setType(SimpleLiteral newType) {
-        if (newType != type) {
-            NotificationChain msgs = null;
-            if (type != null)
-                msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Csw20Package.SUMMARY_RECORD_TYPE__TYPE, null, msgs);
-            if (newType != null)
-                msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - Csw20Package.SUMMARY_RECORD_TYPE__TYPE, null, msgs);
-            msgs = basicSetType(newType, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, Csw20Package.SUMMARY_RECORD_TYPE__TYPE, newType, newType));
+        SimpleLiteral oldType = type;
+        type = newType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, Csw20Package.SUMMARY_RECORD_TYPE__TYPE, oldType, type));
     }
 
     /**
@@ -203,27 +242,23 @@ public class SummaryRecordTypeImpl extends AbstractRecordTypeImpl implements Sum
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
      */
     public EList<SimpleLiteral> getFormat() {
-        // TODO: implement this method to return the 'Format' containment reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
+        if (format == null) {
+            format = new EObjectContainmentEList<SimpleLiteral>(SimpleLiteral.class, this, Csw20Package.SUMMARY_RECORD_TYPE__FORMAT);
+        }
+        return format;
     }
 
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
      */
     public EList<SimpleLiteral> getRelation() {
-        // TODO: implement this method to return the 'Relation' containment reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
+        if (relation == null) {
+            relation = new EObjectContainmentEList<SimpleLiteral>(SimpleLiteral.class, this, Csw20Package.SUMMARY_RECORD_TYPE__RELATION);
+        }
+        return relation;
     }
 
     /**
@@ -265,14 +300,13 @@ public class SummaryRecordTypeImpl extends AbstractRecordTypeImpl implements Sum
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     public EList<BoundingBoxType> getBoundingBox() {
-        // TODO: implement this method to return the 'Bounding Box' containment reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
+        if (boundingBox == null) {
+            boundingBox = new EObjectResolvingEList<BoundingBoxType>(BoundingBoxType.class, this, Csw20Package.SUMMARY_RECORD_TYPE__BOUNDING_BOX);
+        }
+        return boundingBox;
     }
 
     /**
@@ -287,8 +321,6 @@ public class SummaryRecordTypeImpl extends AbstractRecordTypeImpl implements Sum
                 return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
             case Csw20Package.SUMMARY_RECORD_TYPE__TITLE:
                 return ((InternalEList<?>)getTitle()).basicRemove(otherEnd, msgs);
-            case Csw20Package.SUMMARY_RECORD_TYPE__TYPE:
-                return basicSetType(null, msgs);
             case Csw20Package.SUMMARY_RECORD_TYPE__SUBJECT:
                 return ((InternalEList<?>)getSubject()).basicRemove(otherEnd, msgs);
             case Csw20Package.SUMMARY_RECORD_TYPE__FORMAT:
@@ -320,7 +352,8 @@ public class SummaryRecordTypeImpl extends AbstractRecordTypeImpl implements Sum
             case Csw20Package.SUMMARY_RECORD_TYPE__TITLE:
                 return getTitle();
             case Csw20Package.SUMMARY_RECORD_TYPE__TYPE:
-                return getType();
+                if (resolve) return getType();
+                return basicGetType();
             case Csw20Package.SUMMARY_RECORD_TYPE__SUBJECT:
                 return getSubject();
             case Csw20Package.SUMMARY_RECORD_TYPE__FORMAT:
