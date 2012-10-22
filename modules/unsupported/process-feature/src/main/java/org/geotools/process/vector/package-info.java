@@ -2,8 +2,7 @@
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
  *
- *    (C) 2011, Open Source Geospatial Foundation (OSGeo)
- *    (C) 2008-2011 TOPP - www.openplans.org.
+ *    (C) 2008, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
  *    modify it under the terms of the GNU Lesser General Public
@@ -15,16 +14,10 @@
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
  */
-package org.geotools.process.gs;
-
 /**
- * A marker interface used to lookup the processes.
- * 
- * @author Andrea Aime - OpenGeo
+ * Vector processing support for the GeoTools library.
  *
- * @source $URL$
- * @deprecated Not longer needed.
+ * @author Jody Garnett - LISAsoft
+ * @author Andrea Aime - OpenGeo
  */
-public interface GSProcess {
-
-}
+package org.geotools.process.vector;

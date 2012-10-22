@@ -1,10 +1,9 @@
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- *
- *    (C) 2011, Open Source Geospatial Foundation (OSGeo)
- *    (C) 2008-2011 TOPP - www.openplans.org.
- *
+ * 
+ *    (C) 2005-2008, Open Source Geospatial Foundation (OSGeo)
+ *    
  *    This library is free software; you can redistribute it and/or
  *    modify it under the terms of the GNU Lesser General Public
  *    License as published by the Free Software Foundation;
@@ -14,17 +13,25 @@
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
+ *    
  */
-package org.geotools.process.gs;
+package org.geotools.process.geometry;
+
+import org.geotools.process.factory.StaticMethodsProcessFactory;
+import org.geotools.util.SimpleInternationalString;
 
 /**
- * A marker interface used to lookup the processes.
+ * A process factory exposing all the annotated methods in {@link GeometryFunctions}
  * 
  * @author Andrea Aime - OpenGeo
+ * 
  *
  * @source $URL$
- * @deprecated Not longer needed.
  */
-public interface GSProcess {
+public class GeometryProcessFactory extends StaticMethodsProcessFactory<GeometryFunctions> {
+
+    public GeometryProcessFactory() {
+        super(new SimpleInternationalString("Geometry processes"), "geo", GeometryFunctions.class);
+    }
 
 }
